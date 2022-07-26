@@ -6,13 +6,17 @@
     border-radius: 40px;
     margin-right: 30px;
     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    margin-bottom: 25px;
     
     .plus{
       cursor: pointer;
+
     }
 
+    
+
     &:hover{
-    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 20px 35px rgba(251, 0, 255, 0.1);
     transform: translateY(-5.5px);
 
 }

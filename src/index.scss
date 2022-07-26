@@ -5,7 +5,9 @@ body {
   font-family: 'Inter', system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:#7df2ff ;
+ 
+  background: rgb(64,154,255);
+  background: radial-gradient(circle, rgba(64,154,255,1) 0%, rgba(181,132,255,1) 100%);
 }
 
 *{
@@ -31,7 +33,10 @@ header{
     img{
       margin-right: 15px;
     }
-
+    .rur{
+      position: relative;
+      top: -5px;
+    }
     h3, 
     p{
       margin: 0;
@@ -60,6 +65,16 @@ header{
       border-radius: 10px;
       border: 1px solid #f3f3f3;
       padding: 0 15px;
+      position: relative;
+
+      .clear{
+        position: absolute;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        right: 10px;
+        top: 12px;
+      }
       
       input{
         padding: 13px;
@@ -92,7 +107,7 @@ position: absolute;
 
 padding: 36px;
 
-width: 420px;
+width: 425px;
 right: 0;
 height: 100%;
 background: #FFFFFF;

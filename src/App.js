@@ -4,70 +4,58 @@ import Header from './components/Header'
 import Basket from './components/Basket'
 
 
-const arr = [
-  { 
-  title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-  price: 10999, 
-  imU: "/img/Sneakers/1.svg",
-  },
 
-  { 
-  title: 'Мужские Кроссовки Nike Air Max 270',
-  price: 9070,
-  imU:"/img/Sneakers/2.jpg",
-  },
-  
-  { 
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 7599, 
-    imU: "/img/Sneakers/3.svg",
-    },
-
-    { 
-      title: 'Кроссовки Puma X Aka Boku Future Rider',
-      price: 8999, 
-      imU: "/img/Sneakers/4.jpg",
-      },
-]
 
 function App() {
   
+  const [item,SetItems] = React.useState([]);
+  const [CartItems,SetCart] = React.useState([]);
+  const [Opeon,SetOpen] = React.useState(false);
+  const [finder,SetFinder]=React.useState('')
+
+  React.useEffect(()=>{
+    fetch('https://62e00862fa8ed271c47d0b51.mockapi.io/Items').then(res=>{
+      return res.json();
+    }).then(json=>{
+      SetItems(json);
+    });
+  },[])
+
   
-  // const [count,SetCount] = React.useState(0);
+const OnSearch=(event)=>{
+  SetFinder(event.target.value)
+}
 
-  // const plus= ()=>{
-  //   SetCount(count+1);
-  // }
-
-  // const minus= ()=>{
-  //   SetCount(count-1);
-  // }
+ const onAddToCart =(TIP)=>{
+  SetCart(prev=>[...prev,TIP]);
+ }
 
   return <div className="wrapper clear">
+  
+ { Opeon ? <Basket items={CartItems} OnCloseBascet={()=>SetOpen(Opeon=>!Opeon)}/> : null}
+  <Header OnClickBascet={()=>SetOpen(Opeon=>!Opeon)}/>
+  
 
-  <Basket/> 
-
-  <Header/>
-       {/* <h1>{count}</h1>  
-      <button onClick={()=>{plus()}}>+</button>
-      <button onClick={()=>{minus()}}>-</button> */}
    <div className="content p-40">
    <div className="d-flex align-center mb-35 justify-between">
-   <h1 className=" ml-30">All Sneakers</h1>
+   <h1 className=" ml-30">{finder ? `Поиск по запросу "${finder}"` : 'All Sneakers'}</h1>
   <div className="search d-flex mr-30">
     <img src="/img/find.svg" alt="Search"/> 
-    <input placeholder="Поиск ..."/>
+    {finder && 
+    <img onClick={()=>SetFinder('')} className="clear removeBtn cu-p" src="/img/Krest.svg" alt="Clear"/> }
+    <input onChange={OnSearch} value={finder}  placeholder="Поиск ..."/>
   </div>
    </div>
 
- <div className="d-flex ">
-  {arr.map((val)=>(
-  <Card
+ <div className="d-flex flex-wrap ">
+  {item.map((val, index)=>(
+  <Card key={index}
   title={val.title}
   price={val.price}
   imU={val.imU}
-  onLike={()=>console.log("Favorite")}
-  onPlus={()=>console.log("Plus")} />)
+  onPlus={onAddToCart} 
+  onLike={()=>console.log('123') }
+  />)
   )
   } 
   </div>
