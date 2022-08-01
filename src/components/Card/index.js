@@ -12,7 +12,9 @@ function Card({imU,onLike,onPlus,price,title}){
     SetGreen((isGreen)=>!isGreen);
   }
   const TogLk = ()=>{
-    SetLike((isLike)=>!isLike);
+  onLike({title,price,imU});
+  SetLike((isLike)=>!isLike);
+  
   }
   
     return (
