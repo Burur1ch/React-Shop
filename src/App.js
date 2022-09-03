@@ -87,6 +87,8 @@ const onDeleteCart = (id) =>{
   </div>
    </div>
 
+   <div className='davaa'></div>
+
  <div className="d-flex flex-wrap ">
   {item.filter((val)=> val.title.toLowerCase().includes(finder.toLowerCase()))
   .map((val, index)=>(
