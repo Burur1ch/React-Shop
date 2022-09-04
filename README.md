@@ -1,6 +1,7 @@
 Интернет-магазин На React 
 
 Stack:
+
 ReactJS + хуки
 
 React Router
