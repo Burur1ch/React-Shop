@@ -3,11 +3,17 @@
 Stack:
 
 ReactJS + хуки
+
 React Router
+
 Axios
+
 SCSS
+
 React Context
+
 React Skeleton
+
 
 # Getting Started with Create React App
 
